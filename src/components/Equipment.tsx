@@ -29,7 +29,7 @@ export default function Equipment({ onNavigate }: { onNavigate?: (page: string) 
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-copper-500 tracking-widest uppercase mb-3">Featured Equipment</h2>
           <h3 className="text-3xl md:text-4xl font-bold mb-6">State-of-the-Art Hardware</h3>
-          <button 
+          <button
             onClick={() => onNavigate && onNavigate('catalog')}
             className="text-copper-400 hover:text-white transition-colors font-medium flex items-center justify-center gap-2 mx-auto"
           >
@@ -49,9 +49,9 @@ export default function Equipment({ onNavigate }: { onNavigate?: (page: string) 
               onClick={() => onNavigate && onNavigate(`equipment-${item.id}`)}
             >
               <div className="h-64 overflow-hidden relative">
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
+                <img
+                  src={item.image}
+                  alt={item.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                   referrerPolicy="no-referrer"
                 />

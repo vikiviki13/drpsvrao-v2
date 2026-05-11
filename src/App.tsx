@@ -17,7 +17,10 @@ import ContactPage from './components/ContactPage';
 import PatientEducationHub from './components/PatientEducationHub';
 import EducationArticlePage from './components/EducationArticlePage';
 import BlogPage from './components/BlogPage';
+import BlogDetailPage from './components/BlogDetailPage';
+import FAQPage from './components/FAQPage';
 import { laparoscopyData, endoscopyData, roboticsData, energyDevicesData, imagingData } from './data/mockTechnology';
+import { blogPostsData } from './data/mockBlog';
 import { thyroidData, neurologyData, orthopedicsData, cardiologyData, generalSurgeryData, breastSurgeryData } from './data/mockSpecialty';
 import { equipmentCatalogData } from './data/mockEquipment';
 import { articlesData } from './data/mockArticles';
@@ -116,7 +119,19 @@ export default function App() {
     }
 
     if (currentPage === 'blog') {
-      return <BlogPage />;
+      return <BlogPage onNavigate={setCurrentPage} />;
+    }
+
+    if (currentPage.startsWith('blog-detail-')) {
+      const postId = currentPage.replace('blog-detail-', '');
+      const post = blogPostsData.find(p => p.id === postId);
+      if (post) {
+        return <BlogDetailPage post={post} onBack={() => setCurrentPage('blog')} onNavigate={setCurrentPage} />;
+      }
+    }
+
+    if (currentPage === 'faq') {
+      return <FAQPage />;
     }
 
     if (currentPage === 'contact') {
@@ -146,7 +161,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white selection:bg-maroon-500 selection:text-white">
-      <Header onNavigate={setCurrentPage} forceSolid={currentPage !== 'home'} />
+      <Header
+        onNavigate={setCurrentPage}
+        currentPage={currentPage}
+        forceSolid={currentPage !== 'home'}
+      />
       <main>
         {renderPage()}
       </main>

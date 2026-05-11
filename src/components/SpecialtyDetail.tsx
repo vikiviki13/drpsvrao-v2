@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { 
-  ArrowLeft, Battery, Scale, HeartPulse, User, 
-  Stethoscope, Syringe, Waves, Microscope, 
+import {
+  ArrowLeft, Battery, Scale, HeartPulse, User,
+  Stethoscope, Syringe, Waves, Microscope,
   ChevronDown, ChevronUp, Calendar, ArrowRight
 } from 'lucide-react';
 import { SpecialtyData } from '../types';
@@ -27,7 +27,7 @@ export default function SpecialtyDetail({ data, onBack, onNavigate }: Props) {
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1">
-            <button 
+            <button
               onClick={onBack}
               className="flex items-center gap-2 text-copper-600 hover:text-copper-500 transition-colors mb-6 text-sm font-medium"
             >
@@ -48,7 +48,7 @@ export default function SpecialtyDetail({ data, onBack, onNavigate }: Props) {
       </div>
 
       <div className="max-w-4xl mx-auto px-6 mt-16 space-y-24">
-        
+
         {/* Symptoms Section */}
         <section>
           <div className="text-center mb-12">
@@ -59,7 +59,7 @@ export default function SpecialtyDetail({ data, onBack, onNavigate }: Props) {
             {data.symptoms.map((symptom, idx) => {
               const IconComponent = iconMap[symptom.iconName] || User;
               return (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -89,12 +89,12 @@ export default function SpecialtyDetail({ data, onBack, onNavigate }: Props) {
           <div className="relative">
             {/* Vertical Line */}
             <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-copper-200 hidden md:block"></div>
-            
+
             <div className="space-y-8">
               {data.diagnosisSteps.map((step, idx) => {
                 const IconComponent = iconMap[step.iconName] || Stethoscope;
                 return (
-                  <motion.div 
+                  <motion.div
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -188,7 +188,7 @@ export default function SpecialtyDetail({ data, onBack, onNavigate }: Props) {
           <div className="space-y-4">
             {data.faqs.map((faq, idx) => (
               <div key={idx} className="bg-white border border-gray-200 rounded-sm overflow-hidden">
-                <button 
+                <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                 >
@@ -214,13 +214,13 @@ export default function SpecialtyDetail({ data, onBack, onNavigate }: Props) {
               Schedule a consultation with our endocrine specialists to get a personalized diagnosis and treatment plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={() => onNavigate && onNavigate('contact')}
                 className="px-8 py-4 bg-white text-maroon-900 font-bold rounded-sm hover:bg-gray-100 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Calendar className="w-5 h-5" /> Book an Appointment
               </button>
-              <button 
+              <button
                 onClick={() => onNavigate && onNavigate('contact')}
                 className="px-8 py-4 bg-transparent border border-white text-white font-bold rounded-sm hover:bg-white/10 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >

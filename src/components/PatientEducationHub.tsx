@@ -44,7 +44,7 @@ export default function PatientEducationHub({ onNavigate }: { onNavigate?: (page
   return (
     <div className="pt-24 pb-16 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto px-6">
-        <button 
+        <button
           onClick={() => onNavigate?.('home')}
           className="flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-maroon-600 transition-colors mb-8 cursor-pointer"
         >
@@ -60,7 +60,7 @@ export default function PatientEducationHub({ onNavigate }: { onNavigate?: (page
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sections.map((section, idx) => (
-            <motion.div 
+            <motion.div
               key={section.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export default function PatientEducationHub({ onNavigate }: { onNavigate?: (page
               <ul className="space-y-3 mt-auto">
                 {section.links.map((link, linkIdx) => (
                   <li key={linkIdx} className="flex flex-start">
-                    <button 
+                    <button
                       onClick={() => onNavigate?.(link.id)}
                       className="text-copper-600 hover:text-maroon-600 text-sm font-medium hover:underline text-left transition-colors cursor-pointer"
                     >

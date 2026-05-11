@@ -27,7 +27,7 @@ export default function Education({ onNavigate }: { onNavigate?: (page: string) 
                 { title: "Robotic Arm Precision Demo", img: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=800" },
                 { title: "Advanced Endoscopy Visualization", img: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" }
               ].map((video, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   onClick={handleNav}
                   initial={{ opacity: 0, y: 20 }}

@@ -5,9 +5,9 @@ export default function Hero({ onNavigate }: { onNavigate?: (page: string) => vo
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-dark-grey-900">
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=2000" 
-          alt="Advanced Medical Technology" 
+        <img
+          src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=2000"
+          alt="Advanced Medical Technology"
           className="w-full h-full object-cover opacity-40"
           referrerPolicy="no-referrer"
         />
@@ -31,9 +31,9 @@ export default function Hero({ onNavigate }: { onNavigate?: (page: string) => vo
             <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl leading-relaxed font-light">
               Precision, Innovation, Patient Care.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
+              <button
                 onClick={() => onNavigate && onNavigate('catalog')}
                 className="px-8 py-4 bg-maroon-600 hover:bg-maroon-500 text-white font-medium rounded-sm transition-colors flex items-center justify-center gap-2 group"
               >

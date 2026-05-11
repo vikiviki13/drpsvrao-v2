@@ -2,96 +2,79 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Menu, X, ChevronDown, ArrowRight,
-  Monitor, Search, Cpu, Zap, Camera,
+  Monitor, Cpu, Zap, Camera,
   ActivitySquare, Heart, Stethoscope,
-  AlertCircle, FileSearch, Pill,
+  AlertCircle, FileSearch,
   Video, Headphones,
-  User, Briefcase, Mail,
   Activity, Zap as ZapIcon, HeartPulse, Brain,
-  Dna, HelpCircle
+  HelpCircle, Sparkles
 } from 'lucide-react';
 import Logo from './Logo';
 
 const navData = [
   {
-    name: 'Hi-Tech',
+    name: 'Technology',
     id: 'hi-tech',
     spotlight: {
-      title: 'Robotic-Assisted Surgery',
-      desc: 'Experience sub-millimeter precision with state-of-the-art robotic platforms for complex procedures.',
-      image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=400',
-      tag: 'SPOTLIGHT'
+      title: 'Precision Robotics',
+      desc: 'Advancing outcomes through robotic precision.',
+      image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=600',
+      tag: 'FEATURED'
     },
     items: [
-      { name: 'Robotics', desc: 'Precision robotic-assisted systems for complex surgical procedures.', icon: <Cpu className="w-5 h-5" /> },
-      { name: 'Advanced Laparoscopy', desc: 'Minimally invasive camera-guided abdominal surgical techniques.', icon: <Monitor className="w-5 h-5" /> },
-      { name: 'Nano 3D Imaging', desc: 'High-resolution intraoperative imaging for microscopic decision-making.', icon: <Camera className="w-5 h-5" /> },
-      { name: 'Energy Devices', desc: 'Advanced tissue sealing and bloodless cutting technologies.', icon: <Zap className="w-5 h-5" /> },
-      { name: 'Nerve Monitoring', desc: 'Intraoperative neural protection during complex endocrine surgeries.', icon: <Activity className="w-5 h-5" /> },
-      { name: 'Fiber Optics', desc: 'Advanced illumination systems for superior operative visibility.', icon: <ZapIcon className="w-5 h-5" /> },
+      { name: 'Robotics', desc: 'Haptic feedback systems.', icon: <Cpu className="w-4 h-4" /> },
+      { name: 'Laparoscopy', desc: 'Ultra-HD visualization.', icon: <Monitor className="w-4 h-4" /> },
+      { name: '3D Imaging', desc: 'Intraoperative diagnostics.', icon: <Camera className="w-4 h-4" /> },
+      { name: 'Energy', desc: 'Tissue sealing tools.', icon: <Zap className="w-4 h-4" /> },
+      { name: 'Monitoring', desc: 'Neural protection.', icon: <Activity className="w-4 h-4" /> },
+      { name: 'Fiber Optics', desc: 'Superior clarity.', icon: <ZapIcon className="w-4 h-4" /> },
     ]
   },
   {
     name: 'Specialties',
     id: 'specialties',
     spotlight: {
-      title: 'Surgical Excellence',
-      desc: 'Comprehensive multi-disciplinary care across thyroid, breast, and abdominal surgical specialties.',
-      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=400',
+      title: 'Clinical Care',
+      desc: 'Specialized protocols for complex surgery.',
+      image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600',
       tag: 'SPECIALIZED'
     },
     items: [
-      { name: 'Endocrine Surgery', desc: 'Specialized care for thyroid, parathyroid, and adrenal conditions.', icon: <ActivitySquare className="w-5 h-5" /> },
-      { name: 'Breast Surgery', desc: 'Comprehensive oncoplastic care and cancer treatment.', icon: <Heart className="w-5 h-5" /> },
-      { name: 'General Surgery', desc: 'Advanced abdominal and gastrointestinal procedures.', icon: <Stethoscope className="w-5 h-5" /> },
-      { name: 'Cardiology', desc: 'Interventional and surgical cardiovascular care.', icon: <HeartPulse className="w-5 h-5" /> },
-      { name: 'Neurosurgery', desc: 'Advanced brain and spinal surgical interventions.', icon: <Brain className="w-5 h-5" /> },
-      { name: 'Orthopedics', desc: 'Musculoskeletal and joint replacement specialties.', icon: <Activity className="w-5 h-5" /> },
+      { name: 'Endocrine', desc: 'Thyroid & parathyroid.', icon: <ActivitySquare className="w-4 h-4" /> },
+      { name: 'Oncology', desc: 'Breast & cancer care.', icon: <Heart className="w-4 h-4" /> },
+      { name: 'Abdominal', desc: 'Gastrointestinal.', icon: <Stethoscope className="w-4 h-4" /> },
+      { name: 'Cardiac', desc: 'Vascular management.', icon: <HeartPulse className="w-4 h-4" /> },
+      { name: 'Neuro', desc: 'Brain & spinal care.', icon: <Brain className="w-4 h-4" /> },
+      { name: 'Ortho', desc: 'Joint & bone repair.', icon: <Activity className="w-4 h-4" /> },
     ]
   },
   {
-    name: 'Media & Education',
+    name: 'Resources',
     id: 'media-education',
     spotlight: {
-      title: 'Patient Education',
-      desc: 'Empowering patients with knowledge about their conditions and treatment options.',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=400',
-      tag: 'EDUCATION'
+      title: 'Knowledge Hub',
+      desc: 'Expert-led surgical learning materials.',
+      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600',
+      tag: 'INSIGHTS'
     },
     items: [
-      { name: 'Symptoms', desc: 'Identify and understand common warning signs and conditions.', icon: <AlertCircle className="w-5 h-5" /> },
-      { name: 'Diagnosis', desc: 'Learn about modern diagnostic testing and results interpretation.', icon: <FileSearch className="w-5 h-5" /> },
-      { name: 'Treatment Options', desc: 'Explore surgical and medical paths available for your care.', icon: <Pill className="w-5 h-5" /> },
-      { name: 'Videos', desc: 'Educational surgical footage and procedure tutorials.', icon: <Video className="w-5 h-5" /> },
-      { name: 'FAQs', desc: 'Get answers to commonly asked questions about surgery.', icon: <HelpCircle className="w-5 h-5" /> },
-      { name: 'Audio Clips', desc: 'Podcasts and expert interviews on surgical innovation.', icon: <Headphones className="w-5 h-5" /> },
-    ]
-  },
-  {
-    name: 'Contact',
-    id: 'contact',
-    spotlight: {
-      title: 'Consult Now',
-      desc: 'Connect with our team to schedule an appointment or seek professional advice.',
-      image: 'https://images.unsplash.com/photo-1586769852044-692d6e3703a0?auto=format&fit=crop&q=80&w=400',
-      tag: 'SUPPORT'
-    },
-    items: [
-      { name: 'Doctor Inquiries', desc: 'Professional connections for specialist inquiries.', icon: <User className="w-5 h-5" /> },
-      { name: 'Vendor Inquiries', desc: 'Supply chain and partnership opportunities.', icon: <Briefcase className="w-5 h-5" /> },
-      { name: 'General Contact', desc: 'Administrative support and general inquiries.', icon: <Mail className="w-5 h-5" /> },
+      { name: 'Protocols', desc: 'Pre-surgical prep.', icon: <AlertCircle className="w-4 h-4" /> },
+      { name: 'Diagnostics', desc: 'Testing results.', icon: <FileSearch className="w-4 h-4" /> },
+      { name: 'Videos', desc: 'Surgical footage.', icon: <Video className="w-4 h-4" /> },
+      { name: 'Articles', desc: 'Innovation blogs.', icon: <Sparkles className="w-4 h-4" /> },
+      { name: 'FAQs', desc: 'Common questions.', icon: <HelpCircle className="w-4 h-4" /> },
+      { name: 'Lectures', desc: 'Expert podcasts.', icon: <Headphones className="w-4 h-4" /> },
     ]
   }
 ];
 
 const simpleNavItems = [
-  { name: 'Publication', id: 'publication' },
   { name: 'Blog', id: 'blog' },
   { name: 'FAQ', id: 'faq' },
-  { name: 'Kadri Clinic', id: 'kadri-clinic' },
+  { name: 'Contact', id: 'contact' },
 ];
 
-export default function Header({ onNavigate }: { onNavigate?: (page: string) => void }) {
+export default function Header({ onNavigate, currentPage, forceSolid }: { onNavigate?: (page: string) => void, currentPage?: string, forceSolid?: boolean }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
@@ -105,172 +88,195 @@ export default function Header({ onNavigate }: { onNavigate?: (page: string) => 
   };
 
   return (
-    <header className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6">
-      <div className="w-full max-w-[1400px] bg-white/95 backdrop-blur-xl border border-slate-100 shadow-[0_15px_50px_rgba(0,0,0,0.08)] rounded-[2.5rem] px-10 py-4 flex items-center justify-between transition-all duration-500">
-        {/* Logo */}
-        <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer">
-          <Logo />
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
+      <div className={`w-full max-w-[900px] ${forceSolid ? 'bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)]' : 'bg-white/90 backdrop-blur-xl shadow-[0_15px_40px_rgba(0,0,0,0.06)]'} border border-gray-100 rounded-2xl px-6 py-2 flex items-center justify-between transition-all duration-500 pointer-events-auto`}>
+        {/* Logo Section */}
+        <div 
+          onClick={(e) => handleNavClick(e, 'home')} 
+          className="flex items-center gap-2 cursor-pointer group"
+        >
+          <Logo className="w-6 h-6" />
+          <span className="text-sm font-black tracking-tight text-dark-grey-900 leading-none">
+            PSVRAO<span className="text-maroon-600">.</span>
+          </span>
         </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden xl:flex items-center gap-2">
-          <div className="flex items-center gap-1">
-            {navData.map((category) => (
-              <div 
-                key={category.id} 
-                className="static"
-                onMouseEnter={() => setActiveMenu(category.id)}
-                onMouseLeave={() => setActiveMenu(null)}
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-1">
+          {navData.map((category) => (
+            <div 
+              key={category.id} 
+              className="static"
+              onMouseEnter={() => setActiveMenu(category.id)}
+              onMouseLeave={() => setActiveMenu(null)}
+            >
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  let target = category.id;
+                  if (category.id === 'hi-tech') target = 'home#technologies';
+                  else if (category.id === 'specialties') target = 'home#specialties';
+                  else if (category.id === 'media-education') target = 'home#media';
+                  handleNavClick(e, target);
+                }}
+                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-[12px] font-bold tracking-tight transition-all duration-200 ${
+                  activeMenu === category.id || 
+                  (category.id === 'hi-tech' && (currentPage?.startsWith('tech-') || currentPage === 'home#technologies')) ||
+                  (category.id === 'specialties' && (currentPage?.startsWith('specialty-') || currentPage === 'home#specialties')) ||
+                  (category.id === 'media-education' && (currentPage === 'media' || currentPage === 'patient-education' || currentPage?.startsWith('article-') || currentPage === 'home#media'))
+                    ? 'text-maroon-600 bg-maroon-50' 
+                    : 'text-gray-500 hover:text-maroon-600'
+                }`}
               >
-                <button
-                  onClick={(e) => handleNavClick(e, category.id)}
-                  className={`flex items-center gap-1.5 px-5 py-3 rounded-full text-[14px] font-bold transition-all duration-300 ${
-                    activeMenu === category.id ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:text-blue-600'
-                  }`}
-                >
-                  {category.name}
-                  <ChevronDown size={14} className={`transition-transform duration-300 ${activeMenu === category.id ? 'rotate-180' : ''}`} />
-                </button>
+                {category.name}
+                <ChevronDown size={11} className={`transition-transform duration-300 ${activeMenu === category.id ? 'rotate-180' : ''}`} />
+              </button>
 
-                {/* Wide Mega Menu */}
-                <AnimatePresence>
-                  {activeMenu === category.id && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 20, scale: 0.98 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="absolute top-full left-0 right-0 pt-6 px-6"
-                    >
-                      <div className="bg-white rounded-[3rem] shadow-[0_30px_100px_rgba(0,0,0,0.15)] border border-slate-100 overflow-hidden flex min-h-[450px]">
-                        {/* Left Content Area: Grid of Items */}
-                        <div className="flex-1 p-12 grid grid-cols-3 gap-x-8 gap-y-10">
-                          {category.items.map((item) => (
-                            <button
-                              key={item.name}
-                              onClick={(e) => {
-                                let route = item.name.toLowerCase().replace(' ', '-');
-                                // Specific mapping for routes
-                                if (item.name === 'Robotics') route = 'tech-robotics';
-                                else if (item.name === 'Advanced Laparoscopy') route = 'tech-laparoscopy';
-                                else if (item.name === 'Nano 3D Imaging') route = 'tech-imaging';
-                                else if (item.name === 'Energy Devices') route = 'tech-energy';
-                                else if (item.name === 'Endocrine Surgery') route = 'specialty-thyroid';
-                                else if (item.name === 'Breast Surgery') route = 'specialty-breast-surgery';
-                                else if (item.name === 'General Surgery') route = 'specialty-general-surgery';
-                                else if (item.name === 'Cardiology') route = 'specialty-cardiology';
-                                else if (item.name === 'Neurosurgery') route = 'specialty-neurology';
-                                else if (item.name === 'Orthopedics') route = 'specialty-orthopedics';
-                                else if (item.name === 'Symptoms' || item.name === 'Diagnosis' || item.name === 'Treatment Options') route = 'patient-education';
-                                else if (item.name === 'Videos' || item.name === 'FAQs' || item.name === 'Audio Clips') route = 'media';
-                                
-                                handleNavClick(e, route);
-                              }}
-                              className="flex items-start gap-4 text-left group/item transition-all"
-                            >
-                              <div className="w-11 h-11 bg-blue-50/50 text-blue-600 rounded-xl flex items-center justify-center group-hover/item:bg-blue-600 group-hover/item:text-white transition-all duration-300">
-                                {item.icon}
+              {/* Ultra Compact Mega Menu - Perfect Match to Screenshot */}
+              <AnimatePresence>
+                {activeMenu === category.id && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.99 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.99 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute top-full left-0 right-0 pt-4"
+                  >
+                    <div className="bg-white rounded-[2rem] shadow-[0_40px_80px_rgba(0,0,0,0.12)] border border-gray-100 overflow-hidden flex max-w-[850px] mx-auto">
+                      {/* Left: Nav Items Grid (2 Columns) */}
+                      <div className="flex-1 p-10 grid grid-cols-2 gap-x-12 gap-y-8">
+                        {category.items.map((item) => (
+                          <button
+                            key={item.name}
+                            onClick={(e) => {
+                              let route = item.name.toLowerCase().replace(' ', '-');
+                              if (item.name === 'Robotics') route = 'tech-robotics';
+                              else if (item.name === 'Laparoscopy') route = 'tech-laparoscopy';
+                              else if (item.name === '3D Imaging') route = 'tech-imaging';
+                              else if (item.name === 'Energy') route = 'tech-energy';
+                              else if (item.name === 'Endocrine') route = 'specialty-thyroid';
+                              else if (item.name === 'Oncology') route = 'specialty-breast-surgery';
+                              else if (item.name === 'Abdominal') route = 'specialty-general-surgery';
+                              else if (item.name === 'Cardiac') route = 'specialty-cardiology';
+                              else if (item.name === 'Neuro') route = 'specialty-neurology';
+                              else if (item.name === 'Ortho') route = 'specialty-orthopedics';
+                              
+                              handleNavClick(e, route);
+                            }}
+                            className="flex items-center gap-4 text-left group"
+                          >
+                            <div className="w-10 h-10 bg-white border border-gray-50 shadow-[0_2px_10px_rgba(0,0,0,0.03)] text-maroon-600 rounded-xl flex items-center justify-center group-hover:bg-maroon-600 group-hover:text-white transition-all duration-300 shrink-0">
+                              {item.icon}
+                            </div>
+                            <div className="flex flex-col">
+                              <div className="text-[14px] font-bold text-dark-grey-900 leading-none mb-1 group-hover:text-maroon-600 transition-colors">
+                                {item.name}
                               </div>
-                              <div className="flex-1">
-                                <div className="text-[15px] font-bold text-slate-900 mb-1 group-hover/item:text-blue-600 transition-colors">
-                                  {item.name}
-                                </div>
-                                <div className="text-[13px] text-slate-500 leading-relaxed font-medium">
-                                  {item.desc}
-                                </div>
+                              <div className="text-[11px] text-gray-400 font-medium leading-none">
+                                {item.desc}
                               </div>
-                            </button>
-                          ))}
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+
+                      {/* Right: Flush Dark Spotlight Section */}
+                      <div className="w-[280px] bg-[#141414] p-10 flex flex-col relative">
+                        <div className="mb-auto">
+                          <div className="inline-flex items-center px-2.5 py-1 bg-copper-500/10 border border-copper-500/20 text-copper-500 text-[9px] font-black tracking-[0.15em] rounded-md mb-6 uppercase">
+                            {category.spotlight.tag}
+                          </div>
+                          
+                          <h3 className="text-[22px] font-bold text-white mb-4 tracking-tight leading-tight">
+                            {category.spotlight.title}
+                          </h3>
+                          <p className="text-gray-500 text-[13px] leading-relaxed mb-8 font-medium">
+                            {category.spotlight.desc}
+                          </p>
                         </div>
 
-                        {/* Right Section: Spotlight Card */}
-                        <div className="w-[380px] bg-[#0A0F1C] p-8 m-4 rounded-[2.5rem] flex flex-col">
-                          <div className="mb-auto">
-                            <div className="inline-flex items-center px-3 py-1 bg-blue-600 text-white text-[10px] font-black tracking-widest rounded-full mb-6">
-                              {category.spotlight.tag}
+                        <div className="relative rounded-2xl overflow-hidden aspect-[1.4] group/img ring-1 ring-white/5 shadow-2xl">
+                          <img 
+                            src={category.spotlight.image} 
+                            alt={category.spotlight.title}
+                            className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-700"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/90 via-transparent to-transparent" />
+                          
+                          {/* Arrow Circle Button */}
+                          <div className="absolute bottom-3 left-3">
+                            <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center text-white group-hover/img:bg-maroon-600 group-hover/img:border-maroon-600 transition-all duration-300 shadow-lg">
+                              <ArrowRight size={14} />
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-4 leading-tight">
-                              {category.spotlight.title}
-                            </h3>
-                            <p className="text-slate-400 text-[14px] leading-relaxed mb-8">
-                              {category.spotlight.desc}
-                            </p>
-                          </div>
-                          <div className="relative rounded-2xl overflow-hidden aspect-[4/3] group/img">
-                            <img 
-                              src={category.spotlight.image} 
-                              alt={category.spotlight.title}
-                              className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-700"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/80 to-transparent" />
                           </div>
                         </div>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
 
-          <div className="h-6 w-[1.5px] bg-slate-100 mx-4" />
+          <div className="h-3 w-px bg-gray-100 mx-2" />
 
-          {/* Simple Items */}
-          <div className="flex items-center gap-1">
-            {simpleNavItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className="px-5 py-3 rounded-full text-[14px] font-bold text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
+          {simpleNavItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={(e) => handleNavClick(e, item.id)}
+              className={`px-3 py-1.5 rounded-lg text-[12px] font-bold transition-colors ${
+                currentPage === item.id 
+                  ? 'text-maroon-600 bg-maroon-50' 
+                  : 'text-gray-400 hover:text-maroon-600'
+              }`}
+            >
+              {item.name}
+            </button>
+          ))}
         </nav>
 
-        {/* CTA */}
-        <div className="flex items-center gap-4">
+        {/* Action Button */}
+        <div className="flex items-center gap-3">
           <button
             onClick={(e) => handleNavClick(e, 'contact')}
-            className="hidden sm:flex bg-[#0F172A] text-white px-9 py-4 rounded-2xl text-[14px] font-black hover:bg-blue-600 transition-all duration-300 shadow-xl shadow-slate-900/10 active:scale-95"
+            className="hidden sm:flex bg-dark-grey-900 text-white px-5 py-2 rounded-xl text-[11px] font-black uppercase tracking-wider hover:bg-maroon-600 transition-all shadow-lg shadow-maroon-900/10 active:scale-95"
           >
-            Consult Now
+            Consultation
           </button>
 
           <button
-            className="xl:hidden p-3 text-slate-900 hover:bg-slate-50 rounded-2xl transition-colors"
+            className="lg:hidden p-2 text-dark-grey-900 hover:bg-gray-50 rounded-xl transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-32 left-6 right-6 bg-white rounded-[2.5rem] shadow-[0_30px_100px_rgba(0,0,0,0.2)] border border-slate-100 xl:hidden overflow-hidden p-8 z-40"
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-20 left-6 right-6 bg-white rounded-2xl shadow-2xl border border-gray-100 lg:hidden overflow-hidden p-4 z-40 pointer-events-auto"
           >
-            <div className="flex flex-col gap-2 max-h-[60vh] overflow-y-auto pr-2">
+            <div className="flex flex-col gap-1">
               {[...navData, ...simpleNavItems].map((item) => (
                 <button
                   key={item.id}
                   onClick={(e) => handleNavClick(e, item.id)}
-                  className="text-left py-5 px-6 rounded-2xl font-bold text-slate-800 hover:bg-slate-50 hover:text-blue-600 transition-all text-lg"
+                  className="text-left py-3 px-5 rounded-xl font-bold text-dark-grey-900 hover:bg-maroon-50 hover:text-maroon-600 transition-all text-sm"
                 >
                   {item.name}
                 </button>
               ))}
               <button
                 onClick={(e) => handleNavClick(e, 'contact')}
-                className="mt-6 w-full bg-[#0F172A] text-white py-6 rounded-2xl font-black text-center text-lg"
+                className="mt-4 w-full bg-dark-grey-900 text-white py-4 rounded-xl font-black text-center text-xs uppercase tracking-widest"
               >
-                Consult Now
+                Schedule Now
               </button>
             </div>
           </motion.div>

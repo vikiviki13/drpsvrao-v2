@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  ArrowLeft, Info, Settings, Activity, 
-  Box, ShieldCheck, Image as ImageIcon, 
+import {
+  ArrowLeft, Info, Settings, Activity,
+  Box, ShieldCheck, Image as ImageIcon,
   Stethoscope, Droplet, Crosshair, Sparkles,
   PlayCircle, CheckCircle2
 } from 'lucide-react';
@@ -40,7 +40,7 @@ export default function TechnologyDetail({ data, onBack, onNavigate }: Props) {
           <div className="absolute inset-0 bg-gradient-to-r from-dark-grey-900 to-transparent" />
         </div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <button 
+          <button
             onClick={onBack}
             className="flex items-center gap-2 text-copper-400 hover:text-copper-300 transition-colors mb-6 text-sm font-medium"
           >
@@ -54,7 +54,7 @@ export default function TechnologyDetail({ data, onBack, onNavigate }: Props) {
       {/* Main Content Layout */}
       <div className="max-w-7xl mx-auto px-6 mt-12">
         <div className="flex flex-col md:flex-row gap-12">
-          
+
           {/* Sidebar Navigation */}
           <div className="w-full md:w-64 shrink-0">
             <div className="sticky top-32 bg-white rounded-sm shadow-sm border border-gray-100 p-2 flex flex-col gap-1">
@@ -62,11 +62,10 @@ export default function TechnologyDetail({ data, onBack, onNavigate }: Props) {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-sm transition-all text-left ${
-                    activeTab === tab.id 
-                      ? 'bg-maroon-50 text-maroon-600 border-l-2 border-maroon-600' 
+                  className={`flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-sm transition-all text-left ${activeTab === tab.id
+                      ? 'bg-maroon-50 text-maroon-600 border-l-2 border-maroon-600'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-dark-grey-900 border-l-2 border-transparent'
-                  }`}
+                    }`}
                 >
                   {tab.icon}
                   {tab.label}
@@ -162,7 +161,7 @@ export default function TechnologyDetail({ data, onBack, onNavigate }: Props) {
                           </div>
                           <div className="p-5 bg-white">
                             <h4 className="font-semibold text-dark-grey-900 text-lg">{item.name}</h4>
-                            <button 
+                            <button
                               onClick={() => onNavigate && onNavigate(`equipment-${item.id}`)}
                               className="mt-3 text-sm text-copper-600 font-medium hover:text-maroon-600 transition-colors cursor-pointer"
                             >

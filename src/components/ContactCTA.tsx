@@ -17,8 +17,8 @@ export default function ContactCTA({ onNavigate }: { onNavigate?: (page: string)
         <p className="text-maroon-100 text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
           Whether you're a patient seeking care, a doctor looking to refer, or a partner wanting to collaborate, our team is ready to assist you.
         </p>
-        
-        <button 
+
+        <button
           onClick={() => onNavigate && onNavigate('contact')}
           className="px-8 py-4 bg-white hover:bg-gray-100 text-maroon-900 font-bold rounded-sm transition-colors inline-flex items-center justify-center gap-2"
         >

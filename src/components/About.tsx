@@ -17,7 +17,7 @@ export default function About() {
             <p className="text-gray-400 text-lg mb-8 leading-relaxed">
               With over two decades of expertise in medical engineering, MedTech Nexus stands at the forefront of surgical innovation. We partner with leading healthcare institutions globally to deliver technologies that redefine patient outcomes.
             </p>
-            
+
             <div className="grid grid-cols-2 gap-8">
               <div>
                 <h4 className="text-4xl font-bold text-maroon-500 mb-2">25+</h4>

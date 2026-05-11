@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send, Building, User, Stethoscope, Briefcase } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Mail, Phone, MapPin, Send, Building, User, Stethoscope, Briefcase, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 
 const categories = [
-  { id: 'patient', label: 'Patient Inquiry', icon: User, email: 'patients@example.com' },
-  { id: 'doctor', label: 'Doctor / Referral', icon: Stethoscope, email: 'doctors@example.com' },
-  { id: 'vendor', label: 'Vendor / Supplier', icon: Briefcase, email: 'vendors@example.com' },
-  { id: 'institution', label: 'Institutional Partnership', icon: Building, email: 'partners@example.com' }
+  { id: 'patient', label: 'Patient Care', icon: User, email: 'care@psvrao.com' },
+  { id: 'doctor', label: 'Referrals', icon: Stethoscope, email: 'referrals@psvrao.com' },
+  { id: 'vendor', label: 'Procurement', icon: Briefcase, email: 'supply@psvrao.com' },
+  { id: 'institution', label: 'Partnerships', icon: Building, email: 'partners@psvrao.com' }
 ];
 
 export default function ContactPage() {
@@ -19,220 +19,178 @@ export default function ContactPage() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-
   const selectedCategory = categories.find(c => c.id === formData.category) || categories[0];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({ name: '', email: '', phone: '', category: 'patient', message: '' });
-    }, 3000);
+    }, 4000);
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <div className="min-h-screen bg-white selection:bg-maroon-100 selection:text-maroon-900">
+      <div className="flex flex-col lg:flex-row min-h-screen">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-dark-grey-900 mb-6">Get in Touch</h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Whether you're a patient seeking care, a doctor looking to refer, or a partner wanting to collaborate, our team is ready to assist you.
-          </p>
+        {/* Left Panel: Information & Branding (Cinematic) */}
+        <div className="lg:w-[40%] bg-dark-grey-900 relative overflow-hidden flex flex-col p-12 md:p-20 lg:p-24 justify-center">
+          {/* Background Accents */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-maroon-600/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-copper-500/5 blur-[100px] rounded-full -translate-x-1/4 translate-y-1/4" />
+          
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="relative z-10"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-copper-400 text-[10px] font-black tracking-[0.2em] uppercase mb-10">
+              <Sparkles size={14} className="text-maroon-600" />
+              Direct Clinical Access
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-tight">
+              Let's <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-copper-500">Connect.</span>
+            </h1>
+            
+            <p className="text-gray-400 text-xl font-medium leading-relaxed mb-16 max-w-md">
+              Your inquiry will be routed to a specialized clinical coordinator to ensure rapid and accurate response protocols.
+            </p>
+
+            <div className="space-y-10">
+              <div className="flex items-center gap-6 group">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-maroon-500 group-hover:bg-maroon-600 group-hover:text-white transition-all duration-500">
+                  <Phone size={24} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Clinical Support</p>
+                  <p className="text-white text-xl font-bold">+1 (800) PSV-RAO</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 group">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-copper-500 group-hover:bg-copper-500 group-hover:text-white transition-all duration-500">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">Innovation HQ</p>
+                  <p className="text-white text-xl font-bold">Boston, MA 02115</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          
-          {/* Left: Contact Info & Routing */}
-          <div className="lg:col-span-2 space-y-8">
-            
-            {/* Dynamic Routing Info */}
-            <div className="bg-white p-8 rounded-sm shadow-sm border border-gray-100">
-              <h3 className="text-xl font-bold text-dark-grey-900 mb-6">Direct Contacts</h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-maroon-50 flex items-center justify-center text-maroon-600 shrink-0">
-                    <selectedCategory.icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-1">
-                      {selectedCategory.label} Desk
-                    </p>
-                    <a href={`mailto:${selectedCategory.email}`} className="text-copper-600 hover:text-copper-500 font-medium transition-colors">
-                      {selectedCategory.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="h-px bg-gray-100 w-full my-4"></div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 shrink-0">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-1">General Inquiries</p>
-                    <a href="mailto:info@example.com" className="text-gray-600 hover:text-maroon-600 transition-colors block mb-1">info@example.com</a>
-                    <a href="mailto:kadir@example.com" className="text-gray-600 hover:text-maroon-600 transition-colors block">kadir@example.com</a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 shrink-0">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-1">Phone</p>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
-                    <p className="text-xs text-gray-500 mt-1">Mon-Fri, 8am - 6pm EST</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Map / Location */}
-            <div className="bg-white p-8 rounded-sm shadow-sm border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <MapPin className="w-5 h-5 text-copper-500" />
-                <h3 className="text-xl font-bold text-dark-grey-900">Headquarters</h3>
-              </div>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                100 Innovation Drive<br />
-                Medical Technology Park<br />
-                Boston, MA 02115
-              </p>
-              <div className="aspect-video w-full bg-gray-200 rounded-sm overflow-hidden relative">
-                {/* Aesthetic Map Placeholder */}
-                <img 
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800" 
-                  alt="Location Map" 
-                  className="w-full h-full object-cover opacity-80"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-dark-grey-900/10 mix-blend-multiply"></div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-maroon-600 rounded-full border-4 border-white shadow-lg"></div>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right: Contact Form */}
-          <div className="lg:col-span-3">
-            <div className="bg-white p-8 md:p-12 rounded-sm shadow-xl border border-gray-100 relative overflow-hidden">
-              
-              {/* Success Overlay */}
+        {/* Right Panel: The Form (Premium Minimalist) */}
+        <div className="lg:w-[60%] flex items-center justify-center p-8 md:p-20 lg:p-32 bg-gray-50">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-full max-w-2xl relative"
+          >
+            <AnimatePresence>
               {isSubmitted && (
                 <motion.div 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="absolute inset-0 bg-white/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center text-center p-8"
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 bg-white/90 backdrop-blur-xl z-20 flex flex-col items-center justify-center text-center p-10 rounded-[3rem]"
                 >
-                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
-                    <Send className="w-8 h-8" />
+                  <div className="w-24 h-24 bg-green-50 text-green-600 rounded-full flex items-center justify-center mb-8 shadow-xl shadow-green-100">
+                    <CheckCircle2 size={48} />
                   </div>
-                  <h3 className="text-2xl font-bold text-dark-grey-900 mb-2">Message Sent!</h3>
-                  <p className="text-gray-600">Thank you for reaching out. The {selectedCategory.label} team will get back to you shortly.</p>
+                  <h3 className="text-4xl font-black text-dark-grey-900 mb-4 tracking-tight">Inquiry Received.</h3>
+                  <p className="text-gray-500 text-lg font-medium max-w-sm">A clinical specialist will initiate the response protocol within 24 hours.</p>
                 </motion.div>
               )}
+            </AnimatePresence>
 
-              <h2 className="text-2xl font-bold text-dark-grey-900 mb-8">Send us a Message</h2>
+            <div className="bg-white p-10 md:p-16 rounded-[3rem] shadow-[0_30px_100px_rgba(0,0,0,0.04)] border border-white">
+              <h2 className="text-3xl font-black text-dark-grey-900 mb-10 tracking-tight">Secure Communication</h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-10">
                 
-                {/* Category Selection */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">I am a...</label>
-                  <div className="grid grid-cols-2 gap-3">
+                {/* Department Selection Grid */}
+                <div className="space-y-4">
+                  <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest ml-1">Inquiry Department</label>
+                  <div className="grid grid-cols-2 gap-4">
                     {categories.map(cat => (
                       <button
                         key={cat.id}
                         type="button"
                         onClick={() => setFormData({ ...formData, category: cat.id })}
-                        className={`p-3 text-sm font-medium rounded-sm border transition-all flex items-center justify-center gap-2 ${
+                        className={`p-5 rounded-2xl border-2 transition-all flex items-center gap-4 text-left ${
                           formData.category === cat.id 
-                            ? 'border-maroon-600 bg-maroon-50 text-maroon-700' 
-                            : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
+                            ? 'border-maroon-600 bg-maroon-50 text-maroon-900' 
+                            : 'border-gray-50 bg-gray-50 text-gray-400 hover:bg-gray-100 hover:border-gray-200'
                         }`}
                       >
-                        <cat.icon className="w-4 h-4" />
-                        {cat.label.split('/')[0].trim()}
+                        <div className={`shrink-0 ${formData.category === cat.id ? 'text-maroon-600' : 'text-gray-300'}`}>
+                          <cat.icon size={20} />
+                        </div>
+                        <span className="font-bold text-sm leading-tight">{cat.label}</span>
                       </button>
                     ))}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-bold text-gray-700 mb-2">Full Name</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest ml-1">Full Identity</label>
                     <input 
                       type="text" 
-                      id="name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-maroon-500 focus:bg-white transition-colors"
-                      placeholder="John Doe"
+                      className="w-full px-6 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-maroon-600/5 focus:bg-white focus:border-maroon-600 transition-all font-bold text-dark-grey-900"
+                      placeholder="e.g. Dr. Arthur Miller"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
+                  <div className="space-y-3">
+                    <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest ml-1">Verified Email</label>
                     <input 
                       type="email" 
-                      id="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-maroon-500 focus:bg-white transition-colors"
-                      placeholder="john@example.com"
+                      className="w-full px-6 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-maroon-600/5 focus:bg-white focus:border-maroon-600 transition-all font-bold text-dark-grey-900"
+                      placeholder="name@domain.com"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-bold text-gray-700 mb-2">Phone Number (Optional)</label>
-                  <input 
-                    type="tel" 
-                    id="phone"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-maroon-500 focus:bg-white transition-colors"
-                    placeholder="+1 (555) 000-0000"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-2">Message</label>
+                <div className="space-y-3">
+                  <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest ml-1">Clinical Message</label>
                   <textarea 
-                    id="message"
                     required
-                    rows={5}
+                    rows={4}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-sm focus:outline-none focus:ring-2 focus:ring-maroon-500 focus:bg-white transition-colors resize-none"
-                    placeholder="How can we help you today?"
+                    className="w-full px-6 py-5 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-maroon-600/5 focus:bg-white focus:border-maroon-600 transition-all font-medium text-dark-grey-900 resize-none"
+                    placeholder="Briefly describe your inquiry..."
                   ></textarea>
                 </div>
 
                 <button 
                   type="submit"
-                  className="w-full py-4 bg-maroon-600 hover:bg-maroon-700 text-white font-bold rounded-sm transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-6 bg-dark-grey-900 hover:bg-maroon-600 text-white font-black rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl hover:shadow-maroon-900/20 group active:scale-[0.98]"
                 >
-                  <Send className="w-5 h-5" /> Send Message
+                  Initiate Connection <ArrowRight size={20} className="group-hover:translate-x-1.5 transition-transform" />
                 </button>
 
-                <p className="text-xs text-gray-500 text-center mt-4">
-                  By submitting this form, your inquiry will be routed to <span className="font-semibold">{selectedCategory.email}</span>.
+                <p className="text-[10px] text-gray-400 text-center font-black uppercase tracking-[0.2em]">
+                  Encrypted transmission via <span className="text-maroon-600">{selectedCategory.email}</span>
                 </p>
 
               </form>
             </div>
-          </div>
-
+          </motion.div>
         </div>
+
       </div>
     </div>
   );

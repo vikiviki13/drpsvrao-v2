@@ -37,7 +37,7 @@ export default function Specialties({ onNavigate }: { onNavigate?: (page: string
             <h2 className="text-sm font-bold text-maroon-600 tracking-widest uppercase mb-3">Clinical Specialties</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-dark-grey-900">Comprehensive Care Solutions</h3>
           </div>
-          <button 
+          <button
             onClick={() => onNavigate && onNavigate('home#specialties')}
             className="text-copper-600 font-medium hover:text-copper-500 transition-colors flex items-center gap-2 cursor-pointer"
           >
@@ -57,14 +57,14 @@ export default function Specialties({ onNavigate }: { onNavigate?: (page: string
               onClick={() => onNavigate && onNavigate(`specialty-${spec.id}`)}
               className="group relative h-80 rounded-sm overflow-hidden cursor-pointer"
             >
-              <img 
-                src={spec.image} 
-                alt={spec.title} 
+              <img
+                src={spec.image}
+                alt={spec.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark-grey-900 via-dark-grey-900/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-              
+
               <div className="absolute bottom-0 left-0 p-6 w-full">
                 <div className="flex items-center gap-3 mb-2 text-copper-400">
                   {spec.icon}
