@@ -63,8 +63,8 @@ export default function TechnologyDetail({ data, onBack, onNavigate }: Props) {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-sm transition-all text-left ${activeTab === tab.id
-                      ? 'bg-maroon-50 text-maroon-600 border-l-2 border-maroon-600'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-dark-grey-900 border-l-2 border-transparent'
+                    ? 'bg-maroon-50 text-maroon-600 border-l-2 border-maroon-600'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-dark-grey-900 border-l-2 border-transparent'
                     }`}
                 >
                   {tab.icon}

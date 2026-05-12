@@ -19,6 +19,7 @@ import EducationArticlePage from './components/EducationArticlePage';
 import BlogPage from './components/BlogPage';
 import BlogDetailPage from './components/BlogDetailPage';
 import FAQPage from './components/FAQPage';
+import AppointmentPage from './components/AppointmentPage';
 import { laparoscopyData, endoscopyData, roboticsData, energyDevicesData, imagingData } from './data/mockTechnology';
 import { blogPostsData } from './data/mockBlog';
 import { thyroidData, neurologyData, orthopedicsData, cardiologyData, generalSurgeryData, breastSurgeryData } from './data/mockSpecialty';
@@ -136,6 +137,10 @@ export default function App() {
 
     if (currentPage === 'contact') {
       return <ContactPage />;
+    }
+
+    if (currentPage === 'appointment') {
+      return <AppointmentPage onBack={() => setCurrentPage('home')} />;
     }
 
     if (currentPage.startsWith('equipment-')) {

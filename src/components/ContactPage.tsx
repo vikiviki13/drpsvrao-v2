@@ -114,29 +114,7 @@ export default function ContactPage() {
               
               <form onSubmit={handleSubmit} className="space-y-10">
                 
-                {/* Department Selection Grid */}
-                <div className="space-y-4">
-                  <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest ml-1">Inquiry Department</label>
-                  <div className="grid grid-cols-2 gap-4">
-                    {categories.map(cat => (
-                      <button
-                        key={cat.id}
-                        type="button"
-                        onClick={() => setFormData({ ...formData, category: cat.id })}
-                        className={`p-5 rounded-2xl border-2 transition-all flex items-center gap-4 text-left ${
-                          formData.category === cat.id 
-                            ? 'border-maroon-600 bg-maroon-50 text-maroon-900' 
-                            : 'border-gray-50 bg-gray-50 text-gray-400 hover:bg-gray-100 hover:border-gray-200'
-                        }`}
-                      >
-                        <div className={`shrink-0 ${formData.category === cat.id ? 'text-maroon-600' : 'text-gray-300'}`}>
-                          <cat.icon size={20} />
-                        </div>
-                        <span className="font-bold text-sm leading-tight">{cat.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="space-y-3">

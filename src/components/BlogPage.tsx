@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 const featuredPost = {
   id: 'featured-1',
   title: 'The Evolution of Robotic Visualization in Thyroid Surgery',
-  category: 'Technology',
+  category: 'HI-Tech',
   date: 'Nov 28, 2024',
   author: 'Dr. PSV Rao',
   readTime: '12 min read',
@@ -35,7 +35,7 @@ const blogPosts = [
   {
     id: 'post-3',
     title: 'Future of Endoscopy: Beyond Traditional Visualization',
-    category: 'Technology',
+    category: 'HI-Tech',
     date: 'Oct 02, 2024',
     readTime: '10 min read',
     image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&q=80&w=800',
@@ -53,7 +53,7 @@ const blogPosts = [
   {
     id: 'post-5',
     title: 'The Digital Twin Revolution in Surgical Planning',
-    category: 'Technology',
+    category: 'HI-Tech',
     date: 'Sep 18, 2024',
     readTime: '9 min read',
     image: 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=800',
@@ -97,7 +97,11 @@ const blogPosts = [
   },
 ];
 
-export default function BlogPage() {
+interface BlogPageProps {
+  onNavigate: (page: string) => void;
+}
+
+export default function BlogPage({ onNavigate }: BlogPageProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
@@ -120,6 +124,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            onClick={() => onNavigate('blog-detail-' + featuredPost.id)}
             className="relative group cursor-pointer overflow-hidden rounded-[2rem] lg:rounded-[3rem] aspect-[21/10] lg:aspect-[21/8] shadow-2xl shadow-maroon-900/10"
           >
             <img
@@ -158,7 +163,13 @@ export default function BlogPage() {
                   </div>
                 </div>
 
-                <button className="hidden md:flex items-center gap-3 bg-white text-dark-grey-900 px-8 py-4 rounded-full font-bold hover:bg-copper-400 hover:text-white transition-all transform hover:-translate-y-1 active:scale-95 shadow-xl shadow-black/20">
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNavigate('blog-detail-' + featuredPost.id);
+                  }}
+                  className="hidden md:flex items-center gap-3 bg-white text-dark-grey-900 px-8 py-4 rounded-full font-bold hover:bg-copper-400 hover:text-white transition-all transform hover:-translate-y-1 active:scale-95 shadow-xl shadow-black/20"
+                >
                   Read Article
                   <ArrowRight size={20} />
                 </button>
@@ -181,7 +192,7 @@ export default function BlogPage() {
           </div>
 
           <div className="flex gap-3 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">
-            {['All', 'Technology', 'Clinical', 'Patient Care', 'Ethics'].map((tag) => (
+            {['All', 'HI-Tech', 'Clinical', 'Patient Care', 'Ethics'].map((tag) => (
               <button
                 key={tag}
                 className={`px-6 py-3 rounded-xl font-bold text-sm whitespace-nowrap transition-all ${tag === 'All'
@@ -210,7 +221,8 @@ export default function BlogPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group flex flex-col bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:border-maroon-500/20 hover:shadow-2xl hover:shadow-maroon-900/5 transition-all duration-500 h-full"
+                className="group flex flex-col bg-white rounded-[2rem] overflow-hidden border border-gray-100 hover:border-maroon-500/20 hover:shadow-2xl hover:shadow-maroon-900/5 transition-all duration-500 h-full cursor-pointer"
+                onClick={() => onNavigate('blog-detail-' + post.id)}
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
@@ -248,7 +260,13 @@ export default function BlogPage() {
                   </p>
 
                   <div className="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
-                    <button className="flex items-center gap-2 text-dark-grey-900 font-bold text-xs uppercase tracking-widest group/btn hover:text-maroon-600 transition-colors">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onNavigate('blog-detail-' + post.id);
+                      }}
+                      className="flex items-center gap-2 text-dark-grey-900 font-bold text-xs uppercase tracking-widest group/btn hover:text-maroon-600 transition-colors"
+                    >
                       Read Article
                       <div className="w-8 h-8 rounded-full bg-gray-50 group-hover/btn:bg-maroon-500 group-hover/btn:text-white flex items-center justify-center transition-all">
                         <ChevronRight size={16} className="transition-transform group-hover/btn:translate-x-0.5" />

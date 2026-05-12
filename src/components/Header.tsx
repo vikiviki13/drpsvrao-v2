@@ -13,7 +13,7 @@ import Logo from './Logo';
 
 const navData = [
   {
-    name: 'Technology',
+    name: 'HI-Tech',
     id: 'hi-tech',
     spotlight: {
       title: 'Precision Robotics',
@@ -238,7 +238,7 @@ export default function Header({ onNavigate, currentPage, forceSolid }: { onNavi
         {/* Action Button */}
         <div className="flex items-center gap-3">
           <button
-            onClick={(e) => handleNavClick(e, 'contact')}
+            onClick={(e) => handleNavClick(e, 'appointment')}
             className="hidden sm:flex bg-dark-grey-900 text-white px-5 py-2 rounded-xl text-[11px] font-black uppercase tracking-wider hover:bg-maroon-600 transition-all shadow-lg shadow-maroon-900/10 active:scale-95"
           >
             Consultation

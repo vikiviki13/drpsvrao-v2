@@ -11,9 +11,9 @@ export default function EquipmentDetail({ data, onBack, onNavigate }: Props) {
   return (
     <div className="min-h-screen bg-white pt-24 pb-24">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Breadcrumb & Back */}
-        <button 
+        <button
           onClick={onBack}
           className="flex items-center gap-2 text-copper-600 hover:text-copper-500 transition-colors mb-8 text-sm font-medium"
         >
@@ -24,9 +24,9 @@ export default function EquipmentDetail({ data, onBack, onNavigate }: Props) {
           {/* Left: Images */}
           <div className="space-y-6">
             <div className="aspect-square bg-gray-50 rounded-sm border border-gray-100 overflow-hidden">
-              <img 
-                src={data.images[0]} 
-                alt={data.name} 
+              <img
+                src={data.images[0]}
+                alt={data.name}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -92,8 +92,8 @@ export default function EquipmentDetail({ data, onBack, onNavigate }: Props) {
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {data.relatedTechnologies.map((tech, idx) => (
-                    <button 
-                      key={idx} 
+                    <button
+                      key={idx}
                       onClick={() => onNavigate && onNavigate('catalog')}
                       className="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600 hover:border-maroon-500 hover:text-maroon-600 transition-colors cursor-pointer"
                     >
@@ -105,7 +105,7 @@ export default function EquipmentDetail({ data, onBack, onNavigate }: Props) {
 
               {/* CTA */}
               <div className="pt-8 border-t border-gray-100">
-                <button 
+                <button
                   onClick={() => onNavigate && onNavigate('contact')}
                   className="w-full sm:w-auto px-8 py-4 bg-maroon-600 hover:bg-maroon-700 text-white font-bold rounded-sm transition-colors cursor-pointer"
                 >
